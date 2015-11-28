@@ -52,16 +52,8 @@
 
 	app.onactivated = function (args) {
 		if (args.detail.kind === activation.ActivationKind.launch) {
-			if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
-				// TODO: This application has been newly launched. Initialize your application here.
-			} else {
-				// TODO: This application was suspended and then terminated.
-				// To create a smooth user experience, restore application state here so that it looks like the app never stopped running.
-			}
-
-			
-
-			args.setPromise(WinJS.UI.processAll());
+		    document.getElementById('loading').innerHTML = ("Please use this app via the 'Share' button from within your applications.");
+		    
 		}
 	    if (args.detail.kind == activation.ActivationKind.shareTarget) {
 	        var operation = args.detail.shareOperation;
@@ -98,14 +90,10 @@
 
 	        }
 	        else if (data.contains("Shell IDList Array")) {
-	            operation.data.getDataAsync("Shell IDList Array").then(function (data) {
-	                var path = data[0].path;
-	                Windows.Storage.StorageFile.getFileFromPathAsync(data[0].path).then(function (file) {
-	                    var streamReference = new Windows.Storage.Streams.RandomAccessStreamReference.createFromFile(file);
-	                    uploadStreamReference(streamReference, operation);
-	                }, function (error) {
-	                    error;
-	                })
+	            operation.data.getStorageItemsAsync().then(function (storageItems) {
+	                var streamReference = storageItems[0];
+                    uploadStreamReference(streamReference, operation);
+	               
    	            })
 	        }
             else fail("Can't share! Unsupported format.")

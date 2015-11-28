@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="d9a555dd-9486-45cf-ae5e-6eea66eb2007" Version="1.0.0.0" Publisher="CN=sbu" />
+  <Identity Name="54532StefanBuhrmester.UploadToImgur" Version="1.1.1.0" Publisher="CN=E7D6321E-3598-49D5-B0DC-2DF8D0C3DE62" />
   <mp:PhoneIdentity PhoneProductId="d9a555dd-9486-45cf-ae5e-6eea66eb2007" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>JustUpload</DisplayName>
-    <PublisherDisplayName>sbu</PublisherDisplayName>
+    <DisplayName>Upload To Imgur</DisplayName>
+    <PublisherDisplayName>Stefan Buhrmester</PublisherDisplayName>
     <Logo>images\imgur50.png</Logo>
   </Properties>
   <Dependencies>
@@ -17,9 +17,10 @@
     <Application Id="App" StartPage="default.html">
       <uap:VisualElements DisplayName="Upload To Imgur" Description="Just upload to Imgur and copy the direct link." BackgroundColor="transparent" Square150x150Logo="images\imgur150.png" Square44x44Logo="images\imgur44.png">
         <uap:LockScreen Notification="badge" BadgeLogo="images\imgur24.png" />
-        <uap:DefaultTile Wide310x150Logo="images\Wide310x150Logo.png" Square310x310Logo="images/imgur310.png" Square71x71Logo="images\imgur71.png">
+        <uap:DefaultTile Square310x310Logo="images/imgur310.png" Square71x71Logo="images\imgur71.png" Wide310x150Logo="images/imgurtext310.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
             <uap:ShowOn Tile="square310x310Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
