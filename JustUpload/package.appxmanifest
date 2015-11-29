@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="54532StefanBuhrmester.UploadToImgur" Version="1.1.1.0" Publisher="CN=E7D6321E-3598-49D5-B0DC-2DF8D0C3DE62" />
+  <Identity Name="54532StefanBuhrmester.UploadToImgur" Version="1.1.2.0" Publisher="CN=E7D6321E-3598-49D5-B0DC-2DF8D0C3DE62" />
   <mp:PhoneIdentity PhoneProductId="d9a555dd-9486-45cf-ae5e-6eea66eb2007" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Upload To Imgur</DisplayName>
@@ -27,17 +27,6 @@
         <uap:SplashScreen Image="images\imgurtext620.png" />
       </uap:VisualElements>
       <Extensions>
-        <uap:Extension Category="windows.fileTypeAssociation">
-          <uap:FileTypeAssociation Name="upload_to_imgur">
-            <uap:EditFlags AlwaysUnsafe="true" />
-            <uap:SupportedFileTypes>
-              <uap:FileType>.png</uap:FileType>
-              <uap:FileType>.jpg</uap:FileType>
-              <uap:FileType>.gif</uap:FileType>
-              <uap:FileType>.jpeg</uap:FileType>
-            </uap:SupportedFileTypes>
-          </uap:FileTypeAssociation>
-        </uap:Extension>
         <uap:Extension Category="windows.shareTarget">
           <uap:ShareTarget Description="Upload To Imgur">
             <uap:SupportedFileTypes>
@@ -46,6 +35,16 @@
             <uap:DataFormat>Bitmap</uap:DataFormat>
             <uap:DataFormat>HTML</uap:DataFormat>
           </uap:ShareTarget>
+        </uap:Extension>
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="upload_to_imgur">
+            <uap:SupportedFileTypes>
+              <uap:FileType>.png</uap:FileType>
+              <uap:FileType>.jpg</uap:FileType>
+              <uap:FileType>.gif</uap:FileType>
+              <uap:FileType>.jpeg</uap:FileType>
+            </uap:SupportedFileTypes>
+          </uap:FileTypeAssociation>
         </uap:Extension>
       </Extensions>
     </Application>

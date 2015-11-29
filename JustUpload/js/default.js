@@ -24,6 +24,7 @@
 	}
 
 	function uploadStreamReference(streamReference, operation) {
+	    document.getElementById("loading").innerHTML = "Uploading to Imgur. Please wait...";
 	    streamReference.openReadAsync().then(function (imageStream) {
 	        var client = new Windows.Web.Http.HttpClient();
 	        var url  = "https://api.imgur.com/3/image";
@@ -52,8 +53,26 @@
 
 	app.onactivated = function (args) {
 		if (args.detail.kind === activation.ActivationKind.launch) {
-		    document.getElementById('loading').innerHTML = ("Please use this app via the 'Share' button from within your applications.");
-		    
+		    document.getElementById('loading').innerHTML = ("Please pick an image file to upload.");
+		    var picker = new Windows.Storage.Pickers.FileOpenPicker();
+		    picker.viewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
+		    picker.suggestedStartLocation = 
+                Windows.Storage.Pickers.PickerLocationId.picturesLibrary;
+		    picker.fileTypeFilter.append(".jpg");
+		    picker.fileTypeFilter.append(".gif");
+		    picker.fileTypeFilter.append(".jpeg");
+		    picker.fileTypeFilter.append(".png");
+
+		    picker.pickSingleFileAsync().then(function (file) {
+		        if (file != null) {
+		            // Application now has read/write access to the picked file
+		            var streamReference = new Windows.Storage.Streams.RandomAccessStreamReference.createFromFile(file);
+		            uploadStreamReference(streamReference, operation);
+		        }
+		        else {
+		            this.textBlock.Text = "Operation cancelled.";
+		        }
+		    });
 		}
 	    if (args.detail.kind == activation.ActivationKind.shareTarget) {
 	        var operation = args.detail.shareOperation;
